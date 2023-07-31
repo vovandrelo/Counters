@@ -15,12 +15,12 @@ public class App {
 
 		while (scanner.hasNext()) {
 			persons.add(
-				new Person(scanner.nextInt(), scanner.next(), new CounterIndicators(
-					scanner.nextInt(),
-					scanner.nextInt(),
-					scanner.nextInt(),
-					scanner.nextInt(),
-					scanner.nextInt())));
+					new Person(scanner.nextInt(), scanner.next(), new CounterIndicators(
+							scanner.nextInt(),
+							scanner.nextInt(),
+							scanner.nextInt(),
+							scanner.nextInt(),
+							scanner.nextInt())));
 		}
 		scanner.close();
 
