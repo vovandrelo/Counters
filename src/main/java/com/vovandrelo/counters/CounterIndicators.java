@@ -1,5 +1,6 @@
 package com.vovandrelo.counters;
 
+import com.vovandrelo.counters.enums.Indicators;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 
@@ -28,13 +29,4 @@ public class CounterIndicators {
 				throw new RuntimeException();
 		}
 	}
-}
-
-
-enum Indicators {
-	WATER,
-	GAS1,
-	GAS2,
-	ELECTRO1,
-	ELECTRO2,
 }

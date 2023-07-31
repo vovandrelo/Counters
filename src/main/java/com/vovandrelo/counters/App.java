@@ -1,18 +1,28 @@
 package com.vovandrelo.counters;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.vovandrelo.counters.enums.Indicators;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class App {
-	public static void main(String[] args) {
-		Person pers1 = new Person(1, "Анатолий", "Носов", 20, new CounterIndicators(45, 0, 567, 200, 789));
-		Person pers2 = new Person(4, "Роман", "Успенский", 31, new CounterIndicators(12, 15, 17, 400, 300));
-		Person pers3 = new Person(17, "Анфиса", "Рыжкова", 31, new CounterIndicators(6, 78, 789, 66, 55));
-		Person pers4 = new Person(20, "Злата", "Аксёнова", 31, new CounterIndicators(189, 56, 76, 54, 34));
-		Person pers5 = new Person(2, "Влад", "Корнев", 31, new CounterIndicators(45, 34, 45, 76, 67));
+	private static final String FILE_PATH = "/Users/vladimir/Desktop/FinalProject/src/main/resources/data.csv";
 
-		List<Person> persons = new ArrayList<>(List.of(pers1, pers2, pers3, pers4, pers5));
+	public static void main(String[] args) throws IOException {
+		Scanner scanner = new Scanner(Paths.get(FILE_PATH)).useDelimiter("\\||\\s\\n");
+		List<Person> persons = new ArrayList<>();
+
+		while (scanner.hasNext()) {
+			persons.add(
+				new Person(scanner.nextInt(), scanner.next(), new CounterIndicators(
+					scanner.nextInt(),
+					scanner.nextInt(),
+					scanner.nextInt(),
+					scanner.nextInt(),
+					scanner.nextInt())));
+		}
+		scanner.close();
 
 		System.out.println("Поучение максимальных значений:");
 		Optional<Person> maxWaterIndicator = IndicatorsComparator.getMaxIndicator(persons, Indicators.WATER);
